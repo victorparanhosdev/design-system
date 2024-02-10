@@ -22,9 +22,7 @@ export default {
   ],
 } as Meta<MultiStepProps>
 
-export const Primary: StoryObj<MultiStepProps> = {
-  args: {},
-}
+export const Primary: StoryObj<MultiStepProps> = {}
 
 export const Full: StoryObj<MultiStepProps> = {
   args: {

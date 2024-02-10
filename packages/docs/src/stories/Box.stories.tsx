@@ -5,7 +5,7 @@ export default {
   title: 'Surfaces/Box',
   component: Box,
   args: {
-    children: <Text>Testando o elemento Box</Text>,
+    children: <Text >Testando o elemento Box</Text>,
   },
   argTypes: {
     children: {
@@ -16,4 +16,7 @@ export default {
   },
 } as Meta<BoxProps>
 
-export const Primary: StoryObj<BoxProps> = {}
+
+export const Primary: StoryObj<BoxProps> = {
+
+}

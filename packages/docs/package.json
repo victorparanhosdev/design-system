@@ -8,20 +8,18 @@
     "build-vite": "tsc && vite build",
     "build": "storybook build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "dependencies": {
-    "@system-ignite-ui/ts-config": "*",
     "@storybook/addon-a11y": "^7.6.12",
+    "@system-ignite-ui/ts-config": "*",
     "phosphor-react": "^1.4.1",
     "polished": "^4.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@system-ignite-ui/eslint-config": "*",
-    "@system-ignite-ui/react": "*",
-    "@system-ignite-ui/tokens": "*",
     "@storybook/addon-essentials": "^7.6.13",
     "@storybook/addon-interactions": "^7.6.13",
     "@storybook/addon-links": "^7.6.13",
@@ -29,7 +27,11 @@
     "@storybook/blocks": "^7.6.13",
     "@storybook/react": "^7.6.13",
     "@storybook/react-vite": "^7.6.13",
+    "@storybook/storybook-deployer": "^2.8.16",
     "@storybook/test": "^7.6.13",
+    "@system-ignite-ui/eslint-config": "*",
+    "@system-ignite-ui/react": "*",
+    "@system-ignite-ui/tokens": "*",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^6.21.0",

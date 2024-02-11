@@ -1,5 +1,11 @@
 # @system-ignite-ui/react
 
+## 2.0.0
+
+### Major Changes
+
+- project patch
+
 ## 1.0.2
 
 ### Patch Changes

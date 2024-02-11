@@ -1,4 +1,3 @@
-import { ComponentProps } from 'react'
 import { styled } from '../../styles'
 
 export const TextInputContainer = styled('div', {

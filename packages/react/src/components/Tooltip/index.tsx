@@ -1,27 +1,29 @@
 
-import { PlusIcon } from '@radix-ui/react-icons';
-
-import {IconButton, TooltipArrow, TooltipContent, TooltipProvider, TooltipRoot,TooltipPortal, TooltipTrigger} from './styles'
+import {TooltipArrow, TooltipContent} from './styles'
 import { ComponentProps } from 'react';
-
-export interface TooltipProps extends ComponentProps<typeof TooltipRoot>{}
+import { Button } from '../Button';
+import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+export interface TooltipProps extends ComponentProps<typeof TooltipPrimitive.Root>{
+  title: string,
+  subtitle: string
+}
 
 export function Tooltip(props: TooltipProps) {
   return (
-    <TooltipProvider>
-      <TooltipRoot {...props}>
-        <TooltipTrigger asChild>
-          <IconButton>
-            <PlusIcon />
-          </IconButton>
-        </TooltipTrigger>
-        <TooltipPortal>
+    <TooltipPrimitive.Provider>
+      <TooltipPrimitive.Root {...props}>
+        <TooltipPrimitive.Trigger asChild>
+        <Button variant={"secondary"}>{props.title}</Button>
+        </TooltipPrimitive.Trigger>
+        <TooltipPrimitive.Portal>
           <TooltipContent sideOffset={5}>
-            Add to library
-            <TooltipArrow />
+            {props.subtitle}
+            <TooltipArrow/>
           </TooltipContent>
-        </TooltipPortal>
-      </TooltipRoot>
-    </TooltipProvider>
+        </TooltipPrimitive.Portal>
+      </TooltipPrimitive.Root>
+    </TooltipPrimitive.Provider>
   );
 };
+
+Tooltip.displayName = 'Tooltip'

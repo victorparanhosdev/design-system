@@ -1,17 +1,17 @@
 import { styled, keyframes } from "../../styles";
 import * as Toast from '@radix-ui/react-toast'
 
-
+const VIEWPORT_PADDING = 32;
 export const ToastProvider = styled(Toast.Provider, {})
 
-export const Button = styled('button', {})
+
 
 export const ToastTitle = styled(Toast.Title, {
     gridArea: 'title',
     fontSize: '$xl',
     fontWeight: '$bold',
     fontFamily: '$default',
-    lineHeight: '32px',
+    lineHeight: '$base',
     color: '$white'
 })
 
@@ -28,7 +28,7 @@ export const ToastDescription  = styled(Toast.Description , {
 export const ToastClose = styled(Toast.Close, {
   gridArea: 'close',
   cursor: 'pointer',
-  margin: 'auto'
+  margin: 'auto 0 auto auto'
 
 })
 
@@ -37,13 +37,22 @@ export const ToastViewport = styled(Toast.Viewport, {
     bottom: 0,
     right: 0,
     margin: 0,
-    padding: '$8',
+    padding:VIEWPORT_PADDING,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'self-end',
+    gap: 10,
     listStyle: 'none',
     zIndex: 2147483647,
+    outline: 'none',
+    width: '100vw',
+    overflowX: 'hidden'
+    
+
 })
 
 
-const VIEWPORT_PADDING = 25;
+
 
 const hide = keyframes({
       '0%': { opacity: 1 },
@@ -65,14 +74,15 @@ const swipeOut = keyframes({
 
 export const ToastRoot = styled(Toast.Root, {
       backgroundColor: '$gray800',
-      width: '360px',
-      padding: '$3 $5',
+      padding: '$3 $4',
       border: '1px solid $colors$gray600',
       borderRadius: '6px',
       display: 'grid',
+      width: 390,
       gridTemplateAreas: "'title close''description description'",
       justifyContent: 'space-between',
       alignItems: 'center',
+      position: 'relative',
 
       '&[data-state="open"]': {
         animation: `${slideIn} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,

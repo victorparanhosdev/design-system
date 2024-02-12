@@ -1,8 +1,8 @@
-import { ComponentProps } from "react";
-import React from "react";
+import { ComponentProps, useState, useRef, useEffect } from "react";
+import { Button } from "../Button";
 import {
   ToastProvider,
-  Button,
+
   ToastViewport,
   ToastRoot,
   ToastClose,
@@ -12,7 +12,11 @@ import {
 
 import {X} from 'phosphor-react'
 
-export interface ToastProps extends ComponentProps<typeof ToastRoot> {}
+export interface ToastProps extends ComponentProps<typeof ToastRoot> {
+  title: string,
+  nameButton: string,
+  description?: string
+}
 
 function oneWeekAway() {
   const now = new Date();
@@ -20,24 +24,22 @@ function oneWeekAway() {
   return new Date(inOneWeek);
 }
 
-function prettyDate() {
-  return new Intl.DateTimeFormat("en-US", {
-    dateStyle: "full",
-    timeStyle: "short",
-  }).format();
+function prettyDate(date: number | Date | undefined) {
+  return new Intl.DateTimeFormat('pt-BR', { dateStyle: 'full', timeStyle: 'short' }).format(date);
 }
 
-export function Toast(props: ToastProps) {
-  const [open, setOpen] = React.useState(false);
-  const eventDateRef = React.useRef(new Date());
-  const timerRef = React.useRef(0);
+export function Toast({title, nameButton, description, ...props}: ToastProps) {
+  const [open, setOpen] = useState(false);
+  const eventDateRef = useRef(new Date());
+  const timerRef = useRef(0);
 
-  React.useEffect(() => {
+  
+  useEffect(() => {
     return () => clearTimeout(timerRef.current);
   }, []);
   return (
-    <ToastProvider>
-      <Button
+    <ToastProvider >
+      <Button variant={"secondary"}
         onClick={() => {
           setOpen(false);
           window.clearTimeout(timerRef.current);
@@ -47,16 +49,15 @@ export function Toast(props: ToastProps) {
           }, 100);
         }}
       >
-        Add to calendar
+        {nameButton}
       </Button>
       <ToastRoot open={open} onOpenChange={setOpen} {...props}>
-
-          <ToastTitle>Agendamento realizado</ToastTitle>
+          <ToastTitle>{title}</ToastTitle>
           <ToastDescription>
-            Monday, February 19, 2024 at 12:41 PM
+          {prettyDate(eventDateRef.current)}
           </ToastDescription>
           <ToastClose asChild>
-          <X style={{color: '#A9A9B2'}} size={20}/>
+          <X weight="light" style={{color: '#A9A9B2'}} size={20}/>
           </ToastClose>
 
       </ToastRoot>
@@ -65,3 +66,5 @@ export function Toast(props: ToastProps) {
     </ToastProvider>
   );
 }
+
+Toast.displayName = 'Toast'

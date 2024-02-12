@@ -22,14 +22,15 @@ const slideLeftAndFade = keyframes({
 });
 
 export const TooltipContent = styled(Tooltip.Content, {
-  borderRadius: 4,
-  padding: '10px 15px',
-  fontSize: 15,
-  lineHeight: 1,
-  color: 'violet',
-  backgroundColor: 'white',
-  boxShadow: 'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
+  padding: '$3 $4',
+  fontSize: '$sm',
+  lineHeight: '$short',
+  color: '$gray100',
+  fontFamily: '$tooltip',
+  letterSpacing: 1,
+  backgroundColor: '$gray900',
   userSelect: 'none',
+  borderRadius: 5,
   animationDuration: '400ms',
   animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
   willChange: 'transform, opacity',
@@ -40,32 +41,11 @@ export const TooltipContent = styled(Tooltip.Content, {
     '&[data-side="left"]': { animationName: slideRightAndFade },
   },
 });
-
 export const TooltipArrow = styled(Tooltip.Arrow, {
-  fill: 'white',
+  color: '$gray900',
+  fill: '$gray900'
 });
 
-export const IconButton = styled('button', {
-  all: 'unset',
-  fontFamily: 'inherit',
-  borderRadius: '100%',
-  height: 35,
-  width: 35,
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  color: 'violet',
-  backgroundColor: 'white',
-  boxShadow: `0 2px 10px black`,
-  '&:hover': { backgroundColor: 'violet' },
-  '&:focus': { boxShadow: `0 0 0 2px black` },
-});
 
-export const TooltipProvider = styled(Tooltip.Provider, {})
 
-export const TooltipRoot = styled(Tooltip.Root, {})
-
-export const TooltipPortal = styled(Tooltip.Portal, {})
-
-export const TooltipTrigger = styled(Tooltip.Trigger, {})
 

@@ -5,13 +5,13 @@ import {
   Button,
   ToastViewport,
   ToastRoot,
-  ToastAction,
   ToastClose,
   ToastDescription,
   ToastTitle,
 } from "./styles";
-import { Box} from "../Box";
-import { Text } from "../Text";
+
+import {X} from 'phosphor-react'
+
 export interface ToastProps extends ComponentProps<typeof ToastRoot> {}
 
 function oneWeekAway() {
@@ -50,16 +50,15 @@ export function Toast(props: ToastProps) {
         Add to calendar
       </Button>
       <ToastRoot open={open} onOpenChange={setOpen} {...props}>
-        <Box>
-          <Text>Agendamento realizado</Text>
+
+          <ToastTitle>Agendamento realizado</ToastTitle>
           <ToastDescription>
             Monday, February 19, 2024 at 12:41 PM
           </ToastDescription>
+          <ToastClose asChild>
+          <X style={{color: '#A9A9B2'}} size={20}/>
+          </ToastClose>
 
-          <ToastAction asChild altText="Botao para fechar">
-            <Button>FECHAR</Button>
-          </ToastAction>
-        </Box>
       </ToastRoot>
 
       <ToastViewport />
